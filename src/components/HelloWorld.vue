@@ -18,47 +18,47 @@
 </template>
 
 <script>
-import LinksBlock from "./LinksBlock";
-import Card from "./Card";
+import LinksBlock from './LinksBlock';
+import Card from './Card';
 
 export default {
-  name: "HelloWorld",
+  name: 'HelloWorld',
   components: {
     LinksBlock,
-    Card
+    Card,
   },
   data() {
     return {
       links: {
         essential: {
-          title: "Essential Links",
+          title: 'Essential Links',
           links: [
-            { linkTitle: "Core Docs", url: "https://vuejs.org" },
-            { linkTitle: "Forum", url: "https://forum.vuejs.org" },
-            { linkTitle: "Community Chat", url: "https://chat.vuejs.org" },
-            { linkTitle: "Twitter", url: "https://twitter.com/vuejs" },
+            { linkTitle: 'Core Docs', url: 'https://vuejs.org' },
+            { linkTitle: 'Forum', url: 'https://forum.vuejs.org' },
+            { linkTitle: 'Community Chat', url: 'https://chat.vuejs.org' },
+            { linkTitle: 'Twitter', url: 'https://twitter.com/vuejs' },
             {
-              linkTitle: "Docs for This Template",
-              url: "http://vuejs-templates.github.io/webpack/"
-            }
-          ]
+              linkTitle: 'Docs for This Template',
+              url: 'http://vuejs-templates.github.io/webpack/',
+            },
+          ],
         },
         ecosystem: {
-          title: "Ecosystem",
+          title: 'Ecosystem',
           links: [
-            { linkTitle: "vue-router", url: "http://router.vuejs.org/" },
-            { linkTitle: "vuex", url: "http://vuex.vuejs.org/" },
-            { linkTitle: "vue-loader", url: "http://vue-loader.vuejs.org/" },
+            { linkTitle: 'vue-router', url: 'http://router.vuejs.org/' },
+            { linkTitle: 'vuex', url: 'http://vuex.vuejs.org/' },
+            { linkTitle: 'vue-loader', url: 'http://vue-loader.vuejs.org/' },
             {
-              linkTitle: "awesome-vue",
-              url: "https://github.com/vuejs/awesome-vue"
-            }
-          ]
-        }
+              linkTitle: 'awesome-vue',
+              url: 'https://github.com/vuejs/awesome-vue',
+            },
+          ],
+        },
       },
-      msg: "Welcome to Your Vue.js App"
+      msg: 'Welcome to Your Vue.js App',
     };
-  }
+  },
 };
 </script>
 

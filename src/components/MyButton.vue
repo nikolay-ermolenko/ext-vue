@@ -22,7 +22,9 @@
       flex: ''
     }"
     @mousedown="mousedown($event);"
-    class="x-ripple-transition x-rippling x-component x-button x-arrow-align-right x-layout-auto-item"
+    class="x-ripple-transition x-rippling
+    x-component x-button
+    x-arrow-align-right x-layout-auto-item"
   >
     <div class="x-inner-el ">
       <div class="x-body-el">
@@ -62,93 +64,92 @@
 </template>
 
 <script>
-import { ui } from "/src/mixins/MyMixin.js";
+import { ui } from '../mixins/MyMixin';
 
 // https://fiddle.sencha.com/#view/editor&fiddle/2390
 export default {
-  name: "MyButton",
+  name: 'MyButton',
   mixins: [ui],
-  props: ["text", "badgeText", "iconCls", "iconAlign", "ui", "flex"],
-  inject: ["getParentLayout"],
+  props: ['text', 'badgeText', 'iconCls', 'iconAlign', 'ui', 'flex'],
+  inject: ['getParentLayout'],
   computed: {
-    parentLayout: function() {
+    parentLayout() {
       return this.getParentLayout();
     },
-    isCardLayoutItem: function() {
-      return this.getParentLayout() === "card";
+    isCardLayoutItem() {
+      return this.getParentLayout() === 'card';
     },
-    isBoxLayoutItem: function() {
+    isBoxLayoutItem() {
       return (
-        this.getParentLayout() === "box" ||
-        this.getParentLayout() === "hbox" ||
-        this.getParentLayout() === "vbox"
+        this.getParentLayout() === 'box' ||
+        this.getParentLayout() === 'hbox' ||
+        this.getParentLayout() === 'vbox'
       );
     },
-    iconAlignValue: function() {
-      return this.$props.iconAlign || "left";
+    iconAlignValue() {
+      return this.$props.iconAlign || 'left';
     },
-    uiClass: function() {
+    uiClass() {
       return this.hasUi
         ? `x-button-${this.$props.ui} x-component-${this.$props.ui}`
-        : "";
-    }
+        : '';
+    },
   },
-  data: () => {
-    return {
-      isHovered: false,
-      isFocused: false,
-      rippleCount: 0,
-      rippleStack: []
-    };
-  },
+  data: () => ({
+    isHovered: false,
+    isFocused: false,
+    rippleCount: 0,
+    rippleStack: [],
+  }),
   methods: {
-    hover: function(e, isHovered) {
+    hover(e, isHovered) {
       this.isHovered = isHovered;
     },
-    focus: function(e, isFocused) {
+    focus(e, isFocused) {
       this.isFocused = isFocused;
     },
-    click: function(e) {
-      this.$emit("onmyclick", e, {
-        component: this
+    click(e) {
+      this.$emit('onmyclick', e, {
+        component: this,
       });
     },
-    keydown: function() {
-      document.getElementsByTagName("body")[0].classList.add("x-keyboard-mode");
+    keydown() {
+      document.getElementsByTagName('body')[0].classList.add('x-keyboard-mode');
     },
-    removeRipple: function() {},
-    mousedown: function(e) {
+    removeRipple() {},
+    mousedown(e) {
       e.stopPropagation();
       if (e.button === 0) {
-        var rippleDim =
+        let rippleDim =
           this.$el.offsetHeight > this.$el.offsetWidth
             ? this.$el.offsetHeight
             : this.$el.offsetWidth;
-        var rippleCount = ++this.rippleCount;
+        this.rippleCount += 1;
+        const rippleCount = this.rippleCount;
         rippleDim = rippleDim > 275 ? 275 : rippleDim;
         this.rippleStack.push({
           counter: rippleCount,
           color: this.$el.ownerDocument.defaultView.getComputedStyle(this.$el)
             .color,
           dim: rippleDim,
-          top: e.offsetY - rippleDim * 0.5,
-          left: e.offsetX - rippleDim * 0.5
+          top: e.offsetY - (rippleDim * 0.5),
+          left: e.offsetX - (rippleDim * 0.5),
         });
         setTimeout(() => {
           this.rippleStack.splice(
             this.rippleStack.findIndex(r => r.counter === rippleCount),
-            1
+            1,
           );
         }, 400);
         document
-          .getElementsByTagName("body")[0]
-          .classList.remove("x-keyboard-mode");
+          .getElementsByTagName('body')[0]
+          .classList.remove('x-keyboard-mode');
       }
     },
-    touchstart: function() {
-      console.log(5555555);
-    }
-  }
+    touchstart() {
+      // console.log(5555555);
+    },
+  },
 };
 </script>
 

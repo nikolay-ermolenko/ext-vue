@@ -11,11 +11,9 @@
 
 <script>
 export default {
-  name: "LinksBlock",
-  props: ["title", "links"],
-  data: () => {
-    return {};
-  }
+  name: 'LinksBlock',
+  props: ['title', 'links'],
+  data: () => ({}),
 };
 </script>
 

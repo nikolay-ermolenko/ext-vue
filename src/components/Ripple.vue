@@ -15,19 +15,17 @@
 
 <script>
 export default {
-  name: "Ripple",
-  data: () => {
-    return {
-      rippleCount: 0,
-      rippleStack: []
-    };
-  },
+  name: 'Ripple',
+  data: () => ({
+    rippleCount: 0,
+    rippleStack: [],
+  }),
   methods: {
-    aaa: function(e) {
-      console.log(23423423424);
-      if (e.button === 0) {
-      }
-    }
-  }
+    aaa() {
+      // console.log(23423423424);
+      // if (e.button === 0) {
+      // }
+    },
+  },
 };
 </script>

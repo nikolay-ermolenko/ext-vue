@@ -1,48 +1,48 @@
 export const layout = {
   computed: {
-    isCardLayout: function() {
-      return this.$props.layout === "card";
+    isCardLayout() {
+      return this.$props.layout === 'card';
     },
-    isBoxLayout: function() {
+    isBoxLayout() {
       return (
-        this.$props.layout === "box" ||
-        this.$props.layout === "hbox" ||
-        this.$props.layout === "vbox"
+        this.$props.layout === 'box' ||
+        this.$props.layout === 'hbox' ||
+        this.$props.layout === 'vbox'
       );
     },
-    isHBoxLayout: function() {
-      return this.$props.layout === "hbox";
+    isHBoxLayout() {
+      return this.$props.layout === 'hbox';
     },
-    isVBoxLayout: function() {
-      return this.$props.layout === "vbox";
+    isVBoxLayout() {
+      return this.$props.layout === 'vbox';
     },
-    isCenterLayout: function() {
-      return this.$props.layout === "center";
-    }
-  }
+    isCenterLayout() {
+      return this.$props.layout === 'center';
+    },
+  },
 };
 
 export const ui = {
   computed: {
-    hasUi: function() {
-      return this.$props.ui !== null && typeof this.$props.ui !== "undefined";
+    hasUi() {
+      return this.$props.ui !== null && typeof this.$props.ui !== 'undefined';
     },
-    hasBadge: function() {
+    hasBadge() {
       return (
         this.$props.badgeText !== null &&
-        typeof this.$props.badgeText !== "undefined"
+        typeof this.$props.badgeText !== 'undefined'
       );
     },
-    hasText: function() {
+    hasText() {
       return (
-        this.$props.text !== null && typeof this.$props.text !== "undefined"
+        this.$props.text !== null && typeof this.$props.text !== 'undefined'
       );
     },
-    hasIcon: function() {
+    hasIcon() {
       return (
         this.$props.iconCls !== null &&
-        typeof this.$props.iconCls !== "undefined"
+        typeof this.$props.iconCls !== 'undefined'
       );
-    }
-  }
+    },
+  },
 };

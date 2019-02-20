@@ -75,50 +75,51 @@
 </template2>
 
 <script>
-import VueRouter from "vue-router";
-import HelloWorld from "./components/HelloWorld";
-import Toolbar from "./components/Toolbar";
-import MyButton from "./components/MyButton";
-import Ripple from "./components/Ripple";
-import Viewport from "./components/ext/Viewport";
+import VueRouter from 'vue-router';
+import HelloWorld from './components/HelloWorld';
+import Toolbar from './components/Toolbar';
+import MyButton from './components/MyButton';
+import Ripple from './components/Ripple';
+import Viewport from './components/ext/Viewport';
 
 export default {
   components: {
     Toolbar,
     MyButton,
     Ripple,
-    Viewport
+    Viewport,
   },
   router: new VueRouter({
-    linkActiveClass: "text-blue font-bold",
+    linkActiveClass: 'text-blue font-bold',
     routes: [
       {
-        path: "/hello",
-        alias: "/hello/*",
-        meta: { basePath: "/hello" },
-        component: HelloWorld
+        path: '/hello',
+        alias: '/hello/*',
+        meta: { basePath: '/hello' },
+        component: HelloWorld,
       },
       {
-        path: "/route",
-        alias: "/route/*",
-        component: Toolbar
-      }
-    ]
+        path: '/route',
+        alias: '/route/*',
+        component: Toolbar,
+      },
+    ],
   }),
   data() {
     return {
-      layout: "card"
+      layout: 'card',
     };
   },
   methods: {
-    onButtonClick: function(path) {
+    onButtonClick(path) {
       // this.$router.push(path);
-      this.layout = path; //this.layout === "hbox" ? "card" : "hbox";
+      this.layout = path;
+      // this.layout === 'hbox' ? 'card' : 'hbox';
     },
-    buttonClick: function(path) {
+    buttonClick(path) {
       this.$router.push(path);
-    }
-  }
+    },
+  },
 };
 
 // import HelloWorld from "./components/HelloWorld";
@@ -159,6 +160,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  // margin-top: 60px;
 }
 </style>

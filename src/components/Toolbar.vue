@@ -22,45 +22,43 @@
 
 <script>
 export default {
-  name: "MyButton",
-  data: () => {
-    return {
-      isHovered: false,
-      isFocused: false,
-      rippleCount: 0,
-      rippleStack: []
-    };
-  },
+  name: 'MyButton',
+  data: () => ({
+    isHovered: false,
+    isFocused: false,
+    rippleCount: 0,
+    rippleStack: [],
+  }),
   methods: {
-    mousedown: function(e) {
-      console.log(11111);
+    mousedown(e) {
       if (e.button === 0) {
-        var rippleDim =
+        let rippleDim =
           this.$el.offsetHeight > this.$el.offsetWidth
             ? this.$el.offsetHeight
             : this.$el.offsetWidth;
-        var rippleCount = ++this.rippleCount;
+        this.rippleCount += 1;
+        const rippleCount = this.rippleCount;
         rippleDim = rippleDim > 95 ? 95 : rippleDim;
         this.rippleStack.push({
           counter: rippleCount,
           color: this.$el.ownerDocument.defaultView.getComputedStyle(this.$el)
             .color,
           dim: rippleDim,
-          top: e.offsetY - rippleDim * 0.5,
-          left: e.offsetX - rippleDim * 0.5
+          top: e.offsetY - (rippleDim * 0.5),
+          left: e.offsetX - (rippleDim * 0.5),
         });
         setTimeout(() => {
           this.rippleStack.splice(
             this.rippleStack.findIndex(r => r.counter === rippleCount),
-            1
+            1,
           );
         }, 400);
         document
-          .getElementsByTagName("body")[0]
-          .classList.remove("x-keyboard-mode");
+          .getElementsByTagName('body')[0]
+          .classList.remove('x-keyboard-mode');
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -69,8 +67,5 @@ export default {
   padding: 20px 10px;
   box-shadow: 0 4px 13px -4px black;
   background: #f9f9f9;
-}
-.toolbar > div {
-  //margin: 0 5px;
 }
 </style>
