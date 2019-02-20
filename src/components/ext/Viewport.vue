@@ -12,7 +12,7 @@
         'x-layout-vbox': isVBoxLayout,
         'x-layout-center': isCenterLayout,
         'x-vertical': isVBoxLayout,
-        'x-align-stretch': true
+        'x-align-stretch': false
       }"
     >
       <slot v-bind:isCardLayout="isCardLayout" />
