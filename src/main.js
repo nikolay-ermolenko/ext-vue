@@ -3,6 +3,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './App';
+import './assets/css/theme-material-all_1.css';
+import './assets/css/theme-material-all_2.css';
 
 Vue.use(VueRouter);
 // import Toolbar from "./components/Toolbar";

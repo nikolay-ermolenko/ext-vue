@@ -2,6 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <img width="25%" src="../assets/logo.png" />
+    <LinksBlock title="ExtJS Examples" :links="links.extjs.links" />
     <LinksBlock :title="links.essential.title" :links="links.essential.links" />
     <LinksBlock
       v-if="false"
@@ -18,8 +19,8 @@
 </template>
 
 <script>
-import LinksBlock from './LinksBlock';
-import Card from './Card';
+import LinksBlock from '../components/LinksBlock';
+import Card from '../components/Card';
 
 export default {
   name: 'HelloWorld',
@@ -30,6 +31,12 @@ export default {
   data() {
     return {
       links: {
+        extjs: {
+          title: 'ExtJS Examples',
+          links: [
+            { linkTitle: 'Layouts', url: '#/layout' },
+          ],
+        },
         essential: {
           title: 'Essential Links',
           links: [
@@ -66,5 +73,12 @@ export default {
 <style scoped>
 h1 {
   font-weight: normal;
+}
+.hello {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
 </style>

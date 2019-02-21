@@ -1,25 +1,25 @@
 <template>
   <div
     :class="{
-      'x-layout-card-item': parentLayout.isCardLayout,
-      'x-layout-box-item': parentLayout.isBoxLayout,
-      'x-layout-hbox-item': parentLayout.isHBoxLayout,
-      'x-layout-vbox-item': parentLayout.isVBoxLayout,
-      'x-layout-center-item': parentLayout.isCenterLayout,
+      'x-layout-card-item': getParentAAA().isCardLayout,
+      'x-layout-box-item': getParentAAA().isBoxLayout,
+      'x-layout-hbox-item': getParentAAA().isHBoxLayout,
+      'x-layout-vbox-item': getParentAAA().isVBoxLayout,
+      'x-layout-center-item': getParentAAA().isCenterLayout,
       'x-hovered': isHovered,
       'x-focused': isFocused,
       'x-has-badge': hasBadge,
       'x-has-text': hasText,
       'x-has-icon': hasIcon,
       'x-button-round': hasIcon && !hasText,
-      'x-icon-align-left': hasIcon && iconAlignValue === 'left',
-      'x-icon-align-right': hasIcon && iconAlignValue === 'right',
-      'x-icon-align-top': hasIcon && iconAlignValue === 'top',
-      'x-icon-align-bottom': hasIcon && iconAlignValue === 'bottom',
+      'x-icon-align-left': hasIcon && iconAlign === 'left',
+      'x-icon-align-right': hasIcon && iconAlign === 'right',
+      'x-icon-align-top': hasIcon && iconAlign === 'top',
+      'x-icon-align-bottom': hasIcon && iconAlign === 'bottom',
       [uiClass]: hasUi
     }"
     :style="{
-      flex: ''
+      flex: getParentAAA().isCenterLayout ? '' : flex
     }"
     @mousedown="mousedown($event);"
     class="x-ripple-transition x-rippling
@@ -64,18 +64,36 @@
 </template>
 
 <script>
-import { ui } from '../mixins/MyMixin';
+import * as MyMixin from '../../mixins/MyMixin';
 
 // https://fiddle.sencha.com/#view/editor&fiddle/2390
 export default {
-  name: 'MyButton',
-  mixins: [ui],
-  props: ['text', 'badgeText', 'iconCls', 'iconAlign', 'ui', 'flex'],
-  inject: ['getParentLayout'],
-  computed: {
-    parentLayout() {
-      return this.getParentLayout();
+  name: 'Button',
+  mixins: [MyMixin.ui, MyMixin.layout],
+  props: {
+    text: {
+      type: String,
     },
+    badgeText: {
+      type: String,
+    },
+    iconCls: {
+      type: String,
+    },
+    iconAlign: {
+      type: String,
+      default: 'left',
+    },
+    ui: {
+      type: String,
+    },
+    flex: {
+      type: String,
+      default: '1',
+    },
+  },
+  inject: ['getParentAAA'],
+  computed: {
     isCardLayoutItem() {
       return this.getParentLayout() === 'card';
     },
@@ -85,9 +103,6 @@ export default {
         this.getParentLayout() === 'hbox' ||
         this.getParentLayout() === 'vbox'
       );
-    },
-    iconAlignValue() {
-      return this.$props.iconAlign || 'left';
     },
     uiClass() {
       return this.hasUi
@@ -109,7 +124,8 @@ export default {
       this.isFocused = isFocused;
     },
     click(e) {
-      this.$emit('onmyclick', e, {
+      this.$emit('onmyclick', {
+        e,
         component: this,
       });
     },
@@ -145,9 +161,6 @@ export default {
           .getElementsByTagName('body')[0]
           .classList.remove('x-keyboard-mode');
       }
-    },
-    touchstart() {
-      // console.log(5555555);
     },
   },
 };

@@ -1,5 +1,25 @@
 export const layout = {
+  methods: {
+    myAAA() {
+      return {
+        isAutoLayout: this.isAutoLayout,
+        isBoxLayout: this.isBoxLayout,
+        isHBoxLayout: this.isHBoxLayout,
+        isVBoxLayout: this.isVBoxLayout,
+        isCardLayout: this.isCardLayout,
+        isCenterLayout: this.isCenterLayout,
+      };
+    },
+  },
   computed: {
+    parentLayout() {
+      return typeof this.myAAA === 'function'
+        ? this.myAAA()
+        : {};
+    },
+    isAutoLayout() {
+      return this.$props.layout === 'auto';
+    },
     isCardLayout() {
       return this.$props.layout === 'card';
     },
@@ -18,6 +38,9 @@ export const layout = {
     },
     isCenterLayout() {
       return this.$props.layout === 'center';
+    },
+    isFlex() {
+      return this.$props.flex === 'center';
     },
   },
 };
