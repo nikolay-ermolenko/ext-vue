@@ -19,7 +19,7 @@ export default {
   mixins: [MyMixin.layout],
   provide() {
     return {
-      getParentAAA: this.myAAA,
+      getParentLayout: this.myLayout,
     };
   },
   props: {

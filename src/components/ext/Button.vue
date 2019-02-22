@@ -1,11 +1,11 @@
 <template>
   <div
     :class="{
-      'x-layout-card-item': getParentAAA().isCardLayout,
-      'x-layout-box-item': getParentAAA().isBoxLayout,
-      'x-layout-hbox-item': getParentAAA().isHBoxLayout,
-      'x-layout-vbox-item': getParentAAA().isVBoxLayout,
-      'x-layout-center-item': getParentAAA().isCenterLayout,
+      'x-layout-card-item': getParentLayout().isCardLayout,
+      'x-layout-box-item': getParentLayout().isBoxLayout,
+      'x-layout-hbox-item': getParentLayout().isHBoxLayout,
+      'x-layout-vbox-item': getParentLayout().isVBoxLayout,
+      'x-layout-center-item': getParentLayout().isCenterLayout,
       'x-hovered': isHovered,
       'x-focused': isFocused,
       'x-has-badge': hasBadge,
@@ -19,7 +19,7 @@
       [uiClass]: hasUi
     }"
     :style="{
-      flex: getParentAAA().isCenterLayout ? '' : flex
+      flex: getParentLayout().isCenterLayout ? '' : flex
     }"
     @mousedown="mousedown($event);"
     class="x-ripple-transition x-rippling
@@ -92,7 +92,7 @@ export default {
       default: '1',
     },
   },
-  inject: ['getParentAAA'],
+  inject: ['getParentLayout'],
   computed: {
     isCardLayoutItem() {
       return this.getParentLayout() === 'card';

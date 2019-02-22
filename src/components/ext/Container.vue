@@ -1,27 +1,36 @@
 <template>
   <div class="x-container x-component"
     :class="{
-      'x-layout-auto-item': getParentAAA().isAutoLayout,
-      'x-layout-card-item': getParentAAA().isCardLayout,
-      'x-layout-box-item': getParentAAA().isBoxLayout,
-      'x-layout-hbox-item': getParentAAA().isHBoxLayout,
-      'x-layout-vbox-item': getParentAAA().isVBoxLayout,
-      'x-layout-center-item': getParentAAA().isCenterLayout,
+      'x-layout-auto-item': getParentLayout().isAutoLayout,
+      'x-layout-card-item': getParentLayout().isCardLayout,
+      'x-layout-box-item': getParentLayout().isBoxLayout,
+      'x-layout-hbox-item': getParentLayout().isHBoxLayout,
+      'x-layout-vbox-item': getParentLayout().isVBoxLayout,
+      'x-layout-center-item': getParentLayout().isCenterLayout,
+    }"
+    :style="{
+      flex: getParentLayout().isCenterLayout ? '' : flex
     }"
   >
-    <div class="x-body-el x-container-body-el x-component-body-el"
-      :class="{
-        'x-auto-layout': isAutoLayout,
-        'x-card-layout': isCardLayout,
-        'x-layout-box': isHBoxLayout || isVBoxLayout,
-        'x-layout-hbox': isHBoxLayout,
-        'x-layout-vbox': isVBoxLayout,
-        'x-layout-center': isCenterLayout,
-        'x-vertical': isVBoxLayout,
-        'x-align-stretch': false
-      }"
-    >
-      <slot />
+    <div class="
+      x-body-wrap-el
+      x-panel-body-wrap-el
+      x-container-body-wrap-el
+      x-component-body-wrap-el">
+      <div class="x-body-el x-container-body-el x-component-body-el"
+        :class="{
+          'x-auto-layout': isAutoLayout,
+          'x-card-layout': isCardLayout,
+          'x-layout-box': isHBoxLayout || isVBoxLayout,
+          'x-layout-hbox': isHBoxLayout,
+          'x-layout-vbox': isVBoxLayout,
+          'x-layout-center': isCenterLayout,
+          'x-vertical': isVBoxLayout,
+          'x-align-stretch': false
+        }"
+      >
+        <slot />
+      </div>
     </div>
   </div>
 </template>
@@ -34,10 +43,10 @@ export default {
   mixins: [MyMixin.layout],
   provide() {
     return {
-      getParentAAA: this.myAAA,
+      getParentLayout: this.myLayout,
     };
   },
-  inject: ['getParentAAA'],
+  inject: ['getParentLayout'],
   props: {
     layout: {
       type: String,
@@ -45,6 +54,10 @@ export default {
     },
     pack: {
       type: String,
+    },
+    flex: {
+      type: String,
+      default: '1',
     },
   },
 };

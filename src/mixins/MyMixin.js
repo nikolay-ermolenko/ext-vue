@@ -1,6 +1,6 @@
 export const layout = {
   methods: {
-    myAAA() {
+    myLayout() {
       return {
         isAutoLayout: this.isAutoLayout,
         isBoxLayout: this.isBoxLayout,
@@ -13,8 +13,8 @@ export const layout = {
   },
   computed: {
     parentLayout() {
-      return typeof this.myAAA === 'function'
-        ? this.myAAA()
+      return typeof this.myLayout === 'function'
+        ? this.myLayout()
         : {};
     },
     isAutoLayout() {
