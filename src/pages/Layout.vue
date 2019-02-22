@@ -35,7 +35,7 @@
       <ExtPanel
         :title="layout"
         :iconCls="getIconByLayout"
-        class="my-center-panel" />
+        class="my-center-panel" >asda</ExtPanel>
     </ExtContainer>
   </ExtContainer>
 </template>

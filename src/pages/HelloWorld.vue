@@ -35,6 +35,7 @@ export default {
           title: 'ExtJS Examples',
           links: [
             { linkTitle: 'Layouts', url: '#/layout' },
+            { linkTitle: 'Panels', url: '#/panels' },
           ],
         },
         essential: {

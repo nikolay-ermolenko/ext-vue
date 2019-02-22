@@ -13,10 +13,15 @@
       'x-header-position-right': headerPosition === 'right',
       'x-header-position-bottom': headerPosition === 'bottom',
     }"
+    :style="{
+      flex: getParentLayout().isCenterLayout ? '' : flex
+    }"
   >
     <ExtPanelHeader :title="title" :iconCls="iconCls" />
 
-  ghfhfghfghfgh
+    <a href="#/panels">Goto Panels</a>
+    <br>
+    <a href="#/layout">Goto Layouts</a>
   </div>
 </template>
 
@@ -50,6 +55,10 @@ export default {
     },
     iconCls: {
       type: String,
+    },
+    flex: {
+      type: String,
+      default: '1',
     },
   },
 };
