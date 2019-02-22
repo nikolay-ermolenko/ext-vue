@@ -17,11 +17,26 @@
       flex: getParentLayout().isCenterLayout ? '' : flex
     }"
   >
-    <ExtPanelHeader :title="title" :iconCls="iconCls" />
+    <ExtPanelHeader v-if="hasTitle || hasIcon" :title="title" :iconCls="iconCls" />
 
-    <a href="#/panels">Goto Panels</a>
-    <br>
-    <a href="#/layout">Goto Layouts</a>
+    <slot name="header" />
+
+    <div class="x-body-wrap-el x-panel-body-wrap-el
+      x-container-body-wrap-el x-component-body-wrap-el">
+      <div class="x-body-el x-panel-body-el x-container-body-el
+        x-component-body-el x-noborder-trl"
+        :class="{
+          'x-layout-auto': isAutoLayout,
+          'x-layout-center': isCenterLayout,
+        }"
+      >
+        <div class="x-innerhtml">
+          <a href="#/panels">Goto Panels</a>
+          <br>
+          <a href="#/layout">Goto Layouts</a>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -31,7 +46,7 @@ import ExtPanelHeader from './panel/Header';
 
 export default {
   name: 'Panel',
-  mixins: [MyMixin.layout],
+  mixins: [MyMixin.layout, MyMixin.ui],
   components: {
     ExtPanelHeader,
   },

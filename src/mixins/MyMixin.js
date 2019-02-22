@@ -61,6 +61,11 @@ export const ui = {
         this.$props.text !== null && typeof this.$props.text !== 'undefined'
       );
     },
+    hasTitle() {
+      return (
+        this.$props.title !== null && typeof this.$props.title !== 'undefined'
+      );
+    },
     hasIcon() {
       return (
         this.$props.iconCls !== null &&
