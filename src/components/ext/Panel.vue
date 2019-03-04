@@ -17,7 +17,10 @@
       flex: getParentLayout().isCenterLayout ? '' : flex
     }"
   >
-    <ExtPanelHeader v-if="hasTitle || hasIcon" :title="title" :iconCls="iconCls" />
+    <ExtPanelHeader v-if="hasTitle || hasIcon"
+      :title="title"
+      :iconCls="iconCls"
+    />
 
     <slot name="header" />
 
@@ -30,11 +33,15 @@
           'x-layout-center': isCenterLayout,
         }"
       >
-        <div class="x-innerhtml">
-          <a href="#/panels">Goto Panels</a>
-          <br>
-          <a href="#/layout">Goto Layouts</a>
-        </div>
+
+      <slot name="default" />
+
+      <!-- TEMP CONTENT -->
+      <div class="x-innerhtml">
+        <a href="#/panels">Goto Panels</a>
+        <br>
+        <a href="#/layout">Goto Layouts</a>
+      </div>
       </div>
     </div>
   </div>
@@ -53,6 +60,7 @@ export default {
   provide() {
     return {
       getParentLayout: this.myLayout,
+      getPanelHeaderPosition: this.myHeaderPosition,
     };
   },
   inject: ['getParentLayout'],
@@ -64,6 +72,9 @@ export default {
     headerPosition: {
       type: String,
       default: 'top',
+      validator(value) {
+        return ['left', 'top', 'right', 'bottom'].includes(value);
+      },
     },
     title: {
       type: String,
@@ -74,6 +85,11 @@ export default {
     flex: {
       type: String,
       default: '1',
+    },
+  },
+  methods: {
+    myHeaderPosition() {
+      return this.headerPosition;
     },
   },
 };
