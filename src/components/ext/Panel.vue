@@ -30,7 +30,12 @@
         x-component-body-el x-noborder-trl"
         :class="{
           'x-layout-auto': isAutoLayout,
+          'x-layout-card': isCardLayout,
+          'x-layout-box': isBoxLayout,
+          'x-layout-hbox': isHBoxLayout,
+          'x-layout-vbox': isVBoxLayout,
           'x-layout-center': isCenterLayout,
+          'x-vertical': isVBoxLayout,
         }"
       >
 
@@ -41,6 +46,8 @@
         <a href="#/panels">Goto Panels</a>
         <br>
         <a href="#/layout">Goto Layouts</a>
+        <br>
+        <a href="#/collapsible">Goto Collapsible</a>
       </div>
       </div>
     </div>

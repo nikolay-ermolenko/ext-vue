@@ -42,7 +42,7 @@ export default {
   },
   provide() {
     return {
-      getParentLayout: this.myLayout,
+      getParentLayout: this.myHeaderLayout,
       getHeaderTitleRotation: this.myTitleRotation,
     };
   },
@@ -72,6 +72,16 @@ export default {
   methods: {
     myTitleRotation() {
       return this.titleRotation;
+    },
+    myHeaderLayout() {
+      return {
+        isAutoLayout: false,
+        isBoxLayout: true,
+        isHBoxLayout: ['top', 'bottom'].includes(this.getPanelHeaderPosition()),
+        isVBoxLayout: ['left', 'right'].includes(this.getPanelHeaderPosition()),
+        isCardLayout: false,
+        preventFlex: true,
+      };
     },
   },
 };

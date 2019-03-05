@@ -36,6 +36,7 @@ export default {
           links: [
             { linkTitle: 'Layouts', url: '#/layout' },
             { linkTitle: 'Panels', url: '#/panels' },
+            { linkTitle: 'Collapsible', url: '#/collapsible' },
           ],
         },
         essential: {

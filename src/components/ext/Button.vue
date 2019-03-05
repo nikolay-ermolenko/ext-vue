@@ -19,7 +19,7 @@
       [uiClass]: hasUi
     }"
     :style="{
-      flex: getParentLayout().isCenterLayout ? '' : flex
+      flex: getParentLayout().isCenterLayout || getParentLayout().preventFlex ? '' : flex
     }"
     @mousedown="mousedown($event);"
     class="x-ripple-transition x-rippling
@@ -105,9 +105,13 @@ export default {
       );
     },
     uiClass() {
-      return this.hasUi
-        ? `x-button-${this.$props.ui} x-component-${this.$props.ui}`
-        : '';
+      if (this.hasUi) {
+        return this.$props.ui
+          .split(' ')
+          .map(ui => `x-button-${ui} x-component-${ui}`)
+          .join(' ');
+      }
+      return '';
     },
   },
   data: () => ({

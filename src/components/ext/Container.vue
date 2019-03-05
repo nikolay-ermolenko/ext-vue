@@ -12,11 +12,11 @@
       flex: getParentLayout().isCenterLayout ? '' : flex
     }"
   >
-    <div class="
+    <!-- <div class="
       x-body-wrap-el
       x-panel-body-wrap-el
       x-container-body-wrap-el
-      x-component-body-wrap-el">
+      x-component-body-wrap-el"> -->
       <div class="x-body-el x-container-body-el x-component-body-el"
         :class="{
           'x-auto-layout': isAutoLayout,
@@ -31,7 +31,7 @@
       >
         <slot />
       </div>
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 

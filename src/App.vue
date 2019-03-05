@@ -10,6 +10,7 @@ import ExtViewport from './components/ext/Viewport';
 import PageHelloWorld from './pages/HelloWorld';
 import PageLayout from './pages/Layout';
 import PagePanels from './pages/Panels';
+import PageCollapsible from './pages/Collapsible';
 
 export default {
   components: {
@@ -32,6 +33,11 @@ export default {
         path: '/panels',
         alias: '/panels/*',
         component: PagePanels,
+      },
+      {
+        path: '/collapsible',
+        alias: '/collapsible/*',
+        component: PageCollapsible,
       },
       {
         path: '/',

@@ -2,8 +2,8 @@
   <ExtContainer layout="hbox">
 
     <ExtPanel
-      title="Panel A"
-      flex=".6"
+      title="A"
+      flex=".4"
       :headerPosition="headerPosition"
     >
       <ExtButton
@@ -13,10 +13,10 @@
     </ExtPanel>
 
     <ExtPanel
-      title="Panel B"
+      title="B"
       iconCls="x-fa fa-user"
       :headerPosition="headerPosition"
-      flex=".6"
+      flex=".4"
     >
       <ExtButton
         iconCls="x-fa fa-arrow-right"
@@ -27,7 +27,7 @@
     <ExtPanel
       iconCls="x-fa fa-cog"
       :headerPosition="headerPosition"
-      flex=".4"
+      flex=".3"
     >
       <ExtButton
         iconCls="x-fa fa-arrow-up"
@@ -35,19 +35,26 @@
       />
     </ExtPanel>
 
-    <ExtPanel flex=".8" :headerPosition="headerPosition">
+    <ExtPanel flex=".4" :headerPosition="headerPosition">
       <template v-slot:header>
         <ExtPanelHeader title="ZZZ" iconAlign="right" iconCls="x-fa fa-bars" />
       </template>
       <ExtButton iconCls="x-fa fa-arrow-down" @onmyclick="onButtonClick('bottom');" />
+      <ExtButton iconCls="x-fa fa-undo" @onmyclick="changeRotate();" />
     </ExtPanel>
-    <ExtPanel flex=".8" :headerPosition="headerPosition" layout="center" >
+    <ExtPanel flex="1" :headerPosition="headerPosition" layout="center" >
       <template v-slot:header>
         <ExtPanelHeader>
           <ExtPanelTitle text="L-ZZ" iconCls="x-fa fa-wrench" :rotateIcon="true" />
-          <ExtButton text="GO" iconCls="x-fa fa-file-o" ui="action" />
+          <ExtButton text="GO" iconCls="x-fa fa-file-o" ui="action round" />
           <ExtButton text="ESC" iconCls="x-fa fa-bell-o" ui="decline" />
-          <ExtPanelTitle text="R-ZZ" iconAlign="right" iconCls="x-fa fa-file-o" />
+          <ExtContainer flex="1" />
+          <ExtPanelTitle
+            text="R-ZZ"
+            :rotateIcon="rotateIcon"
+            iconAlign="right"
+            iconCls="x-fa fa-file-o"
+          />
         </ExtPanelHeader>
       </template>
     </ExtPanel>
@@ -72,10 +79,14 @@ export default {
   },
   data: () => ({
     headerPosition: 'top',
+    rotateIcon: false,
   }),
   methods: {
     onButtonClick(headerPosition) {
       this.headerPosition = headerPosition;
+    },
+    changeRotate() {
+      this.rotateIcon = !this.rotateIcon;
     },
   },
 };
